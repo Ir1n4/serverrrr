@@ -9,3 +9,12 @@ router.get('/socies', (req: Request, res: Response) => {
         mensaje: "todo ok!"
     });
 });
+
+router.post('/registro',(req: Request, res: Response) =>{
+    const nombre = req.body.nombre;
+
+    res.json({
+        ok:true,
+        mensaje: `Bienvenido/a ${nombre} !!!`
+    })
+});
