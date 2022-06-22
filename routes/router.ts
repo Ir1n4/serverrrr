@@ -1,12 +1,32 @@
-import { Router, Request, Response } from "express";
-
+import { Router, Request, Response, application } from "express";
+import {Socie} from "../models/socie.model";
 export const router = Router();
 
 
 router.get('/socies', (req: Request, res: Response) => {
+    let socies: Array<Socie> = [
+        {
+            nombre:'Irina',
+            apellido:'Almazan',
+            nick: 'Ir1n4',
+            edad:20
+        },
+        {
+            nombre:'Rocco',
+            apellido:'Hernandez',
+            nick:'R0CC0',
+            edad:22
+        },
+        {
+            nombre:'Maria',
+            apellido:'Paz',
+            nick:'M4r14',
+            edad: 18
+        }
+    ]
     res.json({
         ok: true,
-        mensaje: "todo ok!"
+        socies:socies
     });
 });
 
