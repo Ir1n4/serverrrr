@@ -1,10 +1,7 @@
 import { Router, Request, Response, application } from "express";
 import {Socie} from "../models/socie.model";
 export const router = Router();
-
-
-router.get('/socies', (req: Request, res: Response) => {
-    let socies: Array<Socie> = [
+let socies: Array<Socie> = [
         {
             nombre:'Irina',
             apellido:'Almazan',
@@ -24,9 +21,26 @@ router.get('/socies', (req: Request, res: Response) => {
             edad: 18
         }
     ]
+
+router.get('/socies', (req: Request, res: Response) => {
     res.json({
         ok: true,
         socies:socies
+    });
+});
+
+
+router.get('/socie/:nick', (req:Request, res:Response) =>{
+    let ficha:Socie={nombre: "", apellido: "", nick: "", edad:0};
+
+    socies.forEach(socie =>{
+        if (socie.nick === req.params.nick){
+            ficha=socie;
+        }
+    });
+    res.json({
+        ok:true,
+        socie:ficha
     });
 });
 
