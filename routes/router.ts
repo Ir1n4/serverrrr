@@ -66,3 +66,16 @@ res.json({
 })
 });
 
+router.post('/edit-socie/:nick', (req: Request, res: Response) =>{
+    socies.forEach(socie =>{
+        if (socie.nick === req.params.nick){
+            socie.nick = req.body.nick;
+            socie.apellido = req.body.apellido;
+            socie.edad = Number(req.body.edad);
+            socie.nombre = req.body.nombre;
+        }
+    });
+    res.json({
+        socies: socies
+    })
+})
